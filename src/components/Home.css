@@ -1,0 +1,140 @@
+
+body{
+    background: #000;
+    color: #fff;
+}
+.logo {
+    color: #fff;
+    font-size: 25px;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.body_content-wrapper audio {
+    position: fixed;
+    z-index: 99999;
+}
+.container {
+    padding: 1rem;
+}
+.body_content-wrapper{
+    display: flex;
+}
+header {
+    min-width: 20rem;
+    border-right: 1px solid #eeeeee26;
+}
+.header {
+    position: relative;
+    background-image: linear-gradient(45deg, black, transparent);
+}
+.header h2 {
+    margin-top: 0;
+}
+.header:after {
+    content: "";
+    position: absolute;
+    background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgb(48 44 131) 0%, rgb(9 9 121 / 96%) 35%, rgba(0,212,255,0.03125) 100%);
+    inset: 0;
+    z-index: -1;
+}
+ul.navbar {
+    list-style: none;
+}
+ul.navbar li{
+    padding: 1rem;
+}
+a{
+    text-decoration: none;
+    color:#fff;
+}
+ul.navbar li > a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.popuplar--artist img{
+    height: 100px;
+    width: 100px;
+}
+.popuplar--artist {
+    display: flex;
+    gap: 1rem;
+}
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.media-wrapper{
+    width:24%;
+}
+.media {
+	position: relative;
+	background: #fff;
+	padding-bottom: 100%;
+	height: 0;
+}
+.popuplar--artist > div {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: start;
+    padding: 10px;
+    gap: 15px;
+    flex: 0 0 31%;
+    background: radial-gradient(#fff2 30%, #fff4);
+    border-radius: 20px;
+    color: #fff;
+    align-items: center;
+}
+.popuplar--artist {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    /* margin-inline: 1rem; */
+}
+.wrapper img {
+	position: absolute;
+	inset: 0;
+	height: 100%;
+}
+.media-wrapper:hover .media:after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    opacity: .5;
+    background: #000;
+    cursor: pointer;
+}
+.media-wrapper:hover button.play_button{
+    display: block;
+}
+.audio_button.hidden{
+    display: none!important;
+}
+button.audio_button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+button.audio_button svg {
+    height: 50px;
+    width: 50px;
+    fill: #fff;
+}
+audio {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border: 0;
+    background: rgb(241,243,244);
+}
