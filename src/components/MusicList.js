@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { FaRegPlayCircle } from "@react-icons/all-files/fa/FaRegPlayCircle";
 import { HiPause } from "react-icons/hi";
 import './Home.css';
-function Home() {
-  // document.querySelector('.loader').style.display = "block";
-  const [top, setTop] = useState([]);
-  const [obj, setObj] = useState([]);
+import { useState } from 'react';
+export default function Music() {
+  const [album, setAlbum] = useState([]);
+
   useEffect(() => {
-    var a = async () => {
-      document.querySelector('.loader').style.display = "none";
-      const res = await fetch('https://api.napster.com/v2.1/tracks/top?apikey=N2VmMTg3YWYtNWZhZi00ZmZjLTk0ZWUtOWIzOTIwOTVhNGQx&limit=200');
-      const result = await res.json();
-      console.log(result)
-      setObj(result.tracks);
+    importAll(require.context('../AudioSong', true, /\.(mp3)$/), require.context('../AudioSong', true, /\.(png|jpe?g|svg)$/));
+    // const images = importAll(require.context('../AudioSong', true, '/\.png/'));
+    function importAll(r, q) {
+      let images = {};
+      let data = [];
+      r.keys().map((item, index) => {
+        let song = {
+          music: r(item),
+          images: 0
+        };
+        data.push(song);
+      });
+      q.keys().map((item, index) => {
+        data[index].images = q(item);
+      });
+      setAlbum(data);
     }
-    var top_artist = async () => {
-      const res = await fetch('https://api.napster.com/v2.1/artists/top?apikey=N2VmMTg3YWYtNWZhZi00ZmZjLTk0ZWUtOWIzOTIwOTVhNGQx&limit=6');
-      const result = await res.json();
-      console.log(result)
-      setTop(result.artists);
-    }
-    top_artist();
-    a();
-  }, []);
+  }, [])
   let audio_play = (evt) => {
     let all_audio = document.querySelectorAll('audio');
     let all_play = document.querySelectorAll('.play_button');
@@ -54,32 +56,15 @@ function Home() {
   return (
     <>
       <div className='parent-container'>
-        <div className='header'>
-          <div className='container'>
-            <h2>Hii Dear !</h2>
-            <div className='popuplar--artist'>
-              {
-                top.map((item, index) => (
-                  <div key={item.id}>
-                    <h4>{item.name}</h4>
-                    <img width="50px" height="50px" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" />
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-        </div>
         <div className='wrapper container'>
-          <audio controls src='../AudioSong/WOH.mp3'></audio>
           {
-            obj.map((item) => (
+            album.map((item) => (
               <div className='media-wrapper'>
                 <div className='media'>
-                  <h2 key={item.id}>{item.artistName}</h2>
-                  <img key={item.id} src={`http://direct.rhapsody.com/imageserver/v2/albums/${item.albumId}/images/300x300.jpg`} />
+                  <img src={item.images} />
                   <audio className='hidden'
                     controls
-                    src={item.previewURL}>
+                    src={item.music}>
                     <a href={item.previewURL}>
                       Download audio
                     </a>
@@ -99,5 +84,3 @@ function Home() {
     </>
   )
 }
-
-export default Home

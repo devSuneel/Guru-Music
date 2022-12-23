@@ -49,6 +49,7 @@ ul.navbar li{
 a{
     text-decoration: none;
     color:#fff;
+    cursor: pointer!important;
 }
 ul.navbar li > a {
     display: flex;
@@ -62,6 +63,9 @@ ul.navbar li > a {
 .popuplar--artist {
     display: flex;
     gap: 1rem;
+}
+.parent-container {
+    width: 100%;
 }
 .wrapper {
     display: flex;
@@ -138,3 +142,20 @@ audio {
     border: 0;
     background: rgb(241,243,244);
 }
+@media only screen and (max-width: 767px) {
+    .body_content-wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+    ul.navbar {
+        list-style: none;
+        display: flex;
+    }
+    .popuplar--artist > div {
+        display: flex;
+        flex-direction: column;
+    }
+    .media-wrapper {
+        width: 31.33%;
+    }
+  }
