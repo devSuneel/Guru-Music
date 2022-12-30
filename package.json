@@ -1,4 +1,5 @@
 {
+  "homepage": "http://devSuneel.github.io/Guru-Music",
   "name": "music",
   "version": "0.1.0",
   "private": true,
@@ -12,13 +13,19 @@
     "react-bootstrap": "^2.6.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-player": "^2.11.0",
     "react-router-dom": "^6.4.0",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
+    "style-loader": "^3.3.1",
     "use-sound": "^4.0.1",
+    "video-react": "^0.16.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -40,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
